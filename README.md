@@ -9,11 +9,15 @@ the UFMG's Aerodesign Team (Uai, Sô! Fly!).
  - [ ] Implement wing sweep.
  - [ ] Implement foil aerodynamic torsion.
  - [ ] Implement composite ply analysis.
+ - [ ] Migration to Python.
+ - [ ] Migration to OpenMDAO.
 
 ## References
 
  - [Greco, M. - Resistência dos Materiais: Uma Abordagem Sintética](https://www.amazon.com.br/Resist%C3%AAncia-dos-Materiais-Marcelo-Greco/dp/8535274588)
  - [Megson, T.H.G. - Aircraft Structures for Engineering Students](https://www.amazon.com.br/Aircraft-Structures-Engineering-Students-T-H-G/dp/0081009143)
  - Airframe and Equipment Engineering Report No. 45, AD-A955 270, 1955
+ - [Mathworks Matlab Optimization Docs](https://www.mathworks.com/help/gads/index.html?s_tid=CRUX_lftnav)
+ 
  
  
