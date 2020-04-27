@@ -5,6 +5,7 @@ the UFMG's Aerodesign Team (Uai, Sô! Fly!).
 
 ## TODO
  - [ ] Refactor the code to be more modular.
+ - [ ] Full documentation corverge.
  - [ ] Implement others beam cross-sections.
  - [ ] Implement foil geometric torsion.
  - [ ] Implement wing sweep.
