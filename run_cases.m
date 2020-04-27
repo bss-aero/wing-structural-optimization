@@ -17,11 +17,11 @@
 % constraint_type = 'ss'; % for simply supported
 % constraint_type = 'fx'; % for fixed
 %
-% constraint_inclination (°) => the inclination of a symbolic  truss
+% constraint_angle (°) => the inclination of a symbolic  truss
 % support so an parasol-wing can be modeled
-% constraint_inclination = 0; % this means a vertical truss or no truss at
+% constraint_angle = 0; % this means a vertical truss or no truss at
 % all
-% constraint_inclination = 90; % this will mean a horizontal struss wich is
+% constraint_angle = 90; % this will mean a horizontal struss wich is
 % not applicable at all
 
 %%
@@ -30,11 +30,11 @@ switch run
         section_type = 'reinforced_box';
         constraint_gap = 0.1;
         constraint_type = 'ss';
-        constraint_inclination = 0;
+        constraint_angle = 0;
         foil_name = 'foils/s1223.dat';
 end
 
 save('data/run_config.mat', 'section_type', 'constraint_gap', ...
-     'constraint_type', 'constraint_inclination', 'foil_name');
+     'constraint_type', 'constraint_angle', 'foil_name');
 clearvars('section_type', 'constraint_gap', 'constraint_type', ...
-          'constraint_inclination', 'foil_name')
+          'constraint_angle', 'foil_name')

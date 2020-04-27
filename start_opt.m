@@ -1,29 +1,30 @@
 %% Setup and Start Optimization
-
+%
 % Optimization Problem:
-% Minimize the spar mass of a determined wing, constrained by failure,
-% geometric and project design.
-
-
+% Minimize the spar mass of the wing main structure,
+% constrained by failure, geometric and project design.
+%
+% The wing plant form is a double tapered kind.
+% 
 %% Optimization Variables:
-% X(1) => p_alma_tip
+% X(1) => web_pos_tip
 % X(2) => width_tip
 % X(3) => width_root
-% X(4) => caixao_thickness
-% X(5) => refor_thickness
+% X(4) => box_thickness
+% X(5) => reinforcer_thickness
 
 %% setup project variables
 
 % select run case (details at 'run_cases.m')
 run = 1;
-run_cases
+run_cases % generates data/run_config.mat
 
 %% setup airfoil shape data
 addpath geometry/foil
-parse_foil
+parse_foil % generates data/foil_fit.mat
 
 %% setup wing geometry
-wing_geometry
+wing_geometry % generates data/wing_geometry.mat
 
 %% bounds
 nvars = 5;
@@ -56,6 +57,7 @@ end
 
 clearvars Aineq bineq lb ub nvars optimizer parallel
 
+%%
 [~,data] = f_objetivo(optresult.x);
 
 

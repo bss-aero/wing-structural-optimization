@@ -1,37 +1,43 @@
-function [geometry] = reinforced_box_parametric_geometry( X )
+function [geometry] = reinforced_box_parametric_geometry( X, wing_geometry)
 %% This script uses a parametrization for a reinforced box configuration
 % it must outputs a geometry struct
 
-% tip spar section
-tip_spar_position        = X(1); %
-tip_spar_width           = X(2); %
-tip_spar_thickness       = X(4); %
-tip_reinforcer_thickness = X(5); %
+% tip station
+tip.position                = X(1); % position of the frontmost part in percentage of chord
+tip.width                   = X(2); % width in percentage of chord
+tip.height                  = -1;   % it will serach for the maximum height avaliable 
+tip.box_thickness           = X(4); % thickness of the box
+tip.reinforcer              = X(5); % thickness of the reinforcer
+tip.chord                   = wing_geometry.chord_transitions(3);
 
-% root spar section
-root_spar_width           = X(3); % largura / corda
-root_spar_thickness       = X(4); % espessura da alma em metros
-root_reinforcer_thickness = X(5); % espessura da mesa de compressao em metros
+% mid station
+mid.position                = X(1); %
+mid.width                   = X(3); %
+mid.height                  = -1;   % it will serach for the maximum height avaliable 
+mid.box_thickness           = X(4); %
+mid.reinforcer              = X(5); %
+mid.chord                   = wing_geometry.chord_transitions(2);
 
-%% definicao das secoes parametrizadas ao longo da envergadura
-% seta secoes baseando-se no vetor de carregamento
-n_sec = length(carga(1).x)/2;
-s = carga(1).x(n_sec+1:end);
+% root station
+root.position               = X(1); %
+root.width                  = X(3); %
+root.height                  = -1;   % it will serach for the maximum height avaliable 
+root.box_thickness          = X(4); %
+root.reinforcer             = X(5); %
+root.chord                  = wing_geometry.chord_transitions(1);
 
-geometry.spans = [0 wing.b/2];
+%% generates the geometry
 
-geometry.chords = interp1(wing.spans, wing.chords, geometry.spans);
+% first section
+first_sec = basic_box_section(root, mid);
 
-geometry.web_position = [tip_spar_position*geometry.chords(2) - geometry.chords(2)/4, ...
-                   tip_spar_position*geometry.chords(2) - geometry.chords(2)/4];
-               
-geometry.width = [root_spar_width*geometry.chords(2), ...
-                  tip_spar_width*geometry.chords(2)];
-              
-geometry.t_caixao = [t_caixao_s, tip_spar_thickness];
-               
-geometry.t_refor = [root_reinforcer_thickness tip_reinforcer_thickness];
+% second section
+second_sec = basic_box_section(mid, tip);
 
-geometry.limits = [(geometry.p_alma+geometry.chords/4)./geometry.chords; ...
-                   (geometry.p_alma+geometry.chords/4+geometry.width)./geometry.chords];
+geometry.x_position = [first_sec.x_position second_sec.x_position(2)];
+geometry.width = [first_sec.width second_sec.width(2)];
+geometry.box_thickness = [first_sec.boc_thickness second_sec.box_thickness(2)];
+geometry.limits = [first_sec.limits second_sec.limits(2)];
+
+geometry.reinforcer = [root_reinforcer mid_reinforcer tip_reinforcer];
 end
