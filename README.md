@@ -5,6 +5,7 @@ the UFMG's Aerodesign Team (Uai, Sô! Fly!).
 
 ## TODO
  - [ ] Refactor the code to be more modular.
+ - [ ] Implement others beam cross-sections.
  - [ ] Implement foil geometric torsion.
  - [ ] Implement wing sweep.
  - [ ] Implement foil aerodynamic torsion.

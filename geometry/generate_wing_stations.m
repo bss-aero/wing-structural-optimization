@@ -1,4 +1,4 @@
-function [stations] = generate_wing_stations(wing_geometry, structure_params)
+function [stations] = generate_wing_stations(wing_geometry, structure_params, s)
 %GENERATE_WING_STATION This function generates N interpolated stations
 %   Detailed explanation goes here
 chord       = interp1(wing_geometry.span_transitions, wing_geometry.chord_transitions, s);

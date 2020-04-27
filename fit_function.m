@@ -17,13 +17,13 @@ load('data/loads.mat', 'loads');
 addpath parametrics
 switch section_type
     case 'reinforced_box'
-        s = loads(1).x(n_sec+1:end);
-        geometry = reinforced_box_parametric_geometry(X, wing, s);
+        geometry = reinforced_box_parametric_geometry(X, wing);
 end
 
 %% Generates the wing stations
 addpath geometry
-stations = generate_wing_stations(wing, geometry);
+s = loads(1).x(n_sec+1:end);
+stations = generate_wing_stations(wing, geometry, s);
 
 %% Calculate section properties per station
 for i = n_sec:-1:1
@@ -43,7 +43,7 @@ for i = n_sec:-1:1
 end
 
 %% Calculate force and moment diagrams for the structure per loading case
-for i = length(carga):-1:1
+for i = length(loads):-1:1
     switch constraint_type
         case 'ss'
             internal_loads(i) = beam_forces_SS(loads(i), wing, stations);
