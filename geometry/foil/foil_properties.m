@@ -1,10 +1,10 @@
-function [foil] = foil_properties(chord, scale_thick, limits, offset)
+function [foil] = foil_properties(chord, scale_thick, limits, offset, foil_name)
 %GET_FOIL_PROP Get airfoil geormetric data and info
 %   offsets = [ext_offset int_offset]
 
 %%
 try
-    load('data/foil_fit.mat', 'ex_lin', 'in_lin', 'ext', 'int', 'esp');
+    load(['foils/' foil_name '.mat'], 'ex_lin', 'in_lin', 'ext', 'int', 'esp');
 catch
     error('Por favor, execute o script $parse_foil$ antes de iniciar a rotina');
 end

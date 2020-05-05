@@ -31,7 +31,7 @@ switch run
         constraint_gap = 0.1;
         constraint_type = 'ss';
         constraint_angle = 0;
-        foil_name = 'foils/s1223.dat';
+        foil_name = 's1223';
 end
 
 save('data/run_config.mat', 'section_type', 'constraint_gap', ...

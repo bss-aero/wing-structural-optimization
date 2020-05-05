@@ -6,11 +6,15 @@ the UFMG's Aerodesign Team (Uai, Sô! Fly!).
 ## TODO
  - [ ] Refactor the code to be more modular.
  - [ ] Full documentation corverge.
+
+## Improvements
  - [ ] Implement others beam cross-sections.
  - [ ] Implement foil geometric torsion.
  - [ ] Implement wing sweep.
  - [ ] Implement foil aerodynamic torsion.
  - [ ] Implement composite ply analysis.
+
+## Next Version
  - [ ] Migration to Python.
  - [ ] Migration to OpenMDAO.
 

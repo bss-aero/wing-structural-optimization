@@ -5,11 +5,11 @@ load('data/run_config', 'foil_name');
 delimiter = ' ';
 startRow = 2;
 formatSpec = '%f%f%[^\n\r]';
-fileID = fopen(foil_name,'r');
+fileID = fopen(['foils/' foil_name '.dat'],'r');
 dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'MultipleDelimsAsOne', true, 'TextType', 'string', 'HeaderLines' ,startRow-1, 'ReturnOnError', false, 'EndOfLine', '\r\n');
 fclose(fileID);
 dat = [dataArray{1:end-1}];
-clearvars delimiter startRow formatSpec fileID dataArray ans foil_name;
+clearvars delimiter startRow formatSpec fileID dataArray ans;
 % separate foil intra and extra (selig format)
 [~, i] = min(dat(:,1));
 
@@ -56,5 +56,5 @@ esp = min([esp_in esp_ex])*1e-1;
 % int(:,1) = int(:,1) + 1/4;
 
 
-save('data/foil_fit.mat', 'ex_lin', 'in_lin', 'ext', 'int', 'esp');
+save(['foils/' foil_name '.mat'], 'ex_lin', 'in_lin', 'ext', 'int', 'esp');
 clearvars x y ft ex_lin in_lin esp_in esp_ex esp dat ext i int shift foil_name

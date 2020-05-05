@@ -58,6 +58,6 @@ end
 clearvars Aineq bineq lb ub nvars optimizer parallel
 
 %%
-[~,data] = f_objetivo(optresult.x);
+[~,data] = fit_function(optresult.x);
 
 

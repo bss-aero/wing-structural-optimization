@@ -1,6 +1,6 @@
-function [mass, dm] = long_mass(panel, prop, long_geo, mat_refor, mat_caixao)
+function [mass, dm] = beam_mass(panel, prop, long_geo, mat_refor, mat_caixao)
 % LONG_MASS Calcula a massa da longarina
-    %
+%   Cavalieri's Principle
 panel_c.limits = long_geo.limits(:,1)';
 panel_c.t_caixao = long_geo.t_caixao(1);
 panel_c.t_refor = long_geo.t_refor(1);

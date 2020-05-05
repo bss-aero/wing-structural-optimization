@@ -1,4 +1,4 @@
-function [ esforcos ] = esforcos_biplano_engaste(load_high_tip, load_high_mid, load_low, prop)
+function [ esforcos ] = internal_loads_FX(load_high_tip, load_high_mid, load_low, prop)
 %ESFORCOS_BIPLANO Calcula os esforcos nas longarinas do biplano
 %   Detailed explanation goes here
 

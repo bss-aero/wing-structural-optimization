@@ -29,15 +29,15 @@ stations = generate_wing_stations(wing, geometry, s);
 for i = n_sec:-1:1
     switch section_type
         case 'reinforced_box'
-            properties = reinforced_box_section(stations(i));
+            properties = reinforced_box_section(stations(i), wing);
         case 'D'
-            properties = D_section(stations(i));
+            properties = D_section(stations(i), wing);
         case 'foil_shaped'
-            properties = foild_shaped_section(stations(i));
+            properties = foild_shaped_section(stations(i), wing);
         case 'O'
-            properties = O_section(stations(i));
+            properties = O_section(stations(i), wing);
         case 'box'
-            properties = box_section(stations(i));
+            properties = box_section(stations(i), wing);
     end
     stations(i).properties = properties;
 end
@@ -53,6 +53,7 @@ for i = length(loads):-1:1
 end
 
 %% Calculate structural criterias
+addpath criterias
 for j = length(internal_loads):-1:1
     for i = 1:n_sec
         ms_asa_l(i) = safety_margin(station(i), internal_loads(j).L, i, sections(i)); % left wing

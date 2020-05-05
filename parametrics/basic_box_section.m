@@ -11,7 +11,7 @@ section.x_position = x_position;
 section.width = [root.width*root.chord, ...
                  tip.width*tip.chord];
               
-section.box_thickness = [root.box_thickness, tip.box_thickness];
+section.thickness = [root.thickness, tip.thickness];
 
 chords = [root.chord tip.chord];
 
