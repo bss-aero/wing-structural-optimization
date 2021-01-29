@@ -18,6 +18,17 @@ the UFMG's Aerodesign Team (Uai, Sô! Fly!).
  - [ ] Migration to Python.
  - [ ] Migration to OpenMDAO.
 
+## Methodology
+
+This approach utilizes the basic elastic equations to evaluate structural stress under a set of specified load conditions.
+
+ - Descritize the wing foil and spar cross-section in N sections given a full defined wing and spar geometry.
+ - Interpolate wing foil section and spar cross-section geometry given the a set of M concetrated loads along the span.
+ - Evaluate cross-section properties.
+ - Calculates the M internal loads along the span.
+ - Evaluate the maximum stress in each cross-section.
+ - Find the critical stress value acting on the spar.
+
 ## References
 
  - [Greco, M. - Resistência dos Materiais: Uma Abordagem Sintética](https://www.amazon.com.br/Resist%C3%AAncia-dos-Materiais-Marcelo-Greco/dp/8535274588)
